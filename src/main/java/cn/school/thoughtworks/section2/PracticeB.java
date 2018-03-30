@@ -3,7 +3,7 @@ package cn.school.thoughtworks.section2;
 import java.util.*;
 
 public class PracticeB {
-    Map<String, Integer> countSameElements(List<String> collection1) {
+    public Map<String, Integer> countSameElements(List<String> collection1) {
         PracticeA practiceA = new PracticeA();
         List<String> collectionProcessed = new ArrayList<>();
         for (String s : collection1) {

@@ -5,8 +5,11 @@ import java.util.Map;
 
 public class PracticeD {
     Map<String,Integer> createUpdatedCollection(List<String> collectionA, Map<String,List<String>> object) {
-        //实现练习要求，并改写该行代码。
+        // Attention: PracticeB here is actually section2.PracticeB
+        cn.school.thoughtworks.section2.PracticeB practiceBSection2 = new cn.school.thoughtworks.section2.PracticeB();
+        Map<String, Integer> collection3 = practiceBSection2.countSameElements(collectionA);
+        PracticeB practiceBSection3 = new PracticeB();
 
-        return null;
+        return practiceBSection3.createUpdatedCollection(collection3, object);
     }
 }
