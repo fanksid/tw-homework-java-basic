@@ -1,12 +1,25 @@
 package cn.school.thoughtworks.section2;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PracticeB {
     Map<String, Integer> countSameElements(List<String> collection1) {
-        //实现练习要求，并改写该行代码。
+        PracticeA practiceA = new PracticeA();
+        List<String> collectionProcessed = new ArrayList<>();
+        for (String s : collection1) {
+            int pos;
+            if ((pos = s.indexOf("-")) == -1) {
+                collectionProcessed.add(s);
+            } else {
+                int times = Integer.valueOf(s.substring(1 + pos));
+                String tmpS = s.substring(0, pos);
+                while (times-- > 0) {
+                    collectionProcessed.add(tmpS);
+                }
+            }
 
-        return null;
+        }
+        return practiceA.countSameElements(collectionProcessed);
     }
+
 }
