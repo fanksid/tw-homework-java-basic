@@ -8,33 +8,41 @@ public class PracticeC {
     Map<String, Integer> countSameElements(List<String> collection1) {
         PracticeA practiceA = new PracticeA();
         List<String> collectionProcessed = new ArrayList<>();
-        for (String s : collection1) {
-            int pos;
-            String []splits = {"-", ":", "["};
-            boolean isSpecial = false;
-            for (int i = 0; i < splits.length; i++) {
-                if ((pos = s.indexOf(splits[i])) != -1) {
-                    int times;
-                    if (splits[i].equals("[")) {
-                        int rpos = s.indexOf("]");
-                        times = Integer.valueOf(s.substring(1 + pos, rpos));
-                    } else {
-                        times = Integer.valueOf(s.substring(1 + pos));
-                    }
+        for (String element : collection1) {
+            String[] splits = {"-", ":", "["};
+            boolean isSpecial = handleSpecialCaseAndReturnSpecialTag(collectionProcessed, element, splits);
 
-                    String tmpS = s.substring(0, pos);
-                    while (times-- > 0) {
-                        collectionProcessed.add(tmpS);
-                    }
-                    isSpecial = true;
-                    break;
-                }
-            }
             if (!isSpecial) {
-                collectionProcessed.add(s);
+                collectionProcessed.add(element);
             }
 
         }
         return practiceA.countSameElements(collectionProcessed);
+    }
+
+    private boolean handleSpecialCaseAndReturnSpecialTag(List<String> collectionProcessed, String element, String[] splits) {
+        boolean isSpecial = false;
+        int pos;
+        for (String split : splits) {
+            if ((pos = element.indexOf(split)) == -1) {
+                continue;
+            }
+
+            int times;
+            if (split.equals("[")) {
+                int rpos = element.indexOf("]");
+                times = Integer.valueOf(element.substring(1 + pos, rpos));
+            } else {
+                times = Integer.valueOf(element.substring(1 + pos));
+            }
+
+            String tmpS = element.substring(0, pos);
+            while (times-- > 0) {
+                collectionProcessed.add(tmpS);
+            }
+            isSpecial = true;
+            break;
+        }
+        return isSpecial;
     }
 }
